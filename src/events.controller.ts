@@ -10,6 +10,7 @@ import {
 } from '@nestjs/common';
 
 import { CreateEventDto } from './create-event.dto';
+import { UpdateEventDto } from './update-event.dto';
 
 @Controller('/events')
 export class EventsController {
@@ -33,7 +34,7 @@ export class EventsController {
     ];
   }
   @Get('/:id')
-  findOne(@Param('id') id) {
+  findOne(@Param('id') id: number) {
     return {
       id: id,
       name: `Event ${id}`,
@@ -47,10 +48,10 @@ export class EventsController {
     return input;
   }
   @Patch('/:id')
-  update(@Param('id') id, @Body() input) {
+  update(@Param('id') id: number, @Body() input: UpdateEventDto) {
     return input;
   }
   @Delete('/:id')
   @HttpCode(204)
-  remove(@Param('id') id) {}
+  remove(@Param('id') id: number) {}
 }
