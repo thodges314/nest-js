@@ -1,15 +1,17 @@
-import { Controller, Delete, Get, Patch, Post } from '@nestjs/common';
+import { Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 
 @Controller('/events')
 export class EventsController {
   @Get()
   findAll() {}
   @Get('/:id')
-  findOne() {}
+  findOne(@Param('id') id) {
+    return `This action returns a #${id} event`;
+  }
   @Post()
   create() {}
-  @Patch()
+  @Patch('/:id')
   update() {}
-  @Delete()
+  @Delete('/:id')
   remove() {}
 }
