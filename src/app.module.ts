@@ -14,6 +14,8 @@ import { EventsController } from './events.controller';
       username: 'root',
       password: 'example',
       database: 'nest-events',
+      entities: [__dirname + '/**/*.entity{.ts,.js}'], //Event
+      synchronize: true,
     }),
   ],
   controllers: [AppController, EventsController],
