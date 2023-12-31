@@ -9,6 +9,8 @@ import {
   Post,
 } from '@nestjs/common';
 
+import { CreateEventDto } from './create-event.dto';
+
 @Controller('/events')
 export class EventsController {
   @Get()
@@ -16,15 +18,17 @@ export class EventsController {
     return [
       {
         id: 1,
-        title: 'Event 1',
+        name: 'Event 1',
         description: 'Description 1',
-        date: new Date(),
+        when: new Date(),
+        address: 'Address 1',
       },
       {
         id: 2,
-        title: 'Event 2',
+        name: 'Event 2',
         description: 'Description 2',
-        date: new Date(),
+        when: new Date(),
+        address: 'Address 2',
       },
     ];
   }
@@ -32,13 +36,14 @@ export class EventsController {
   findOne(@Param('id') id) {
     return {
       id: id,
-      title: `Event ${id}`,
+      name: `Event ${id}`,
       description: `Description ${id}`,
-      date: new Date(),
+      when: new Date(),
+      address: `Address ${id}`,
     };
   }
   @Post()
-  create(@Body() input) {
+  create(@Body() input: CreateEventDto) {
     return input;
   }
   @Patch('/:id')
