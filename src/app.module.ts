@@ -17,6 +17,7 @@ import { EventsController } from './events.controller';
       entities: [__dirname + '/**/*.entity{.ts,.js}'], //Event
       synchronize: true,
     }),
+    TypeOrmModule.forFeature([Event]),
   ],
   controllers: [AppController, EventsController],
   providers: [AppService],
